@@ -6,7 +6,6 @@ var autoprefixer = require('autoprefixer');
 
 
 module.exports = {
-    devtool: 'source-map',
     cache: true,
     entry: {
         index: './src/index'
