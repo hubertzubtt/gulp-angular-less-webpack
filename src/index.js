@@ -1,21 +1,22 @@
 var indexFile = require('file?name=[name].[ext]!./index.html');
-var angular = require('angular');
-var angularRoute = require('angular-route');
 
-var testModule = require('./modules/testModule/testModule');
+// angular deps
+var angular = require('angular'),
+    angularRoute = require('angular-route');
 
-angular.module('app', [
+// app modules
+var testModule = require('./modules/testModule/testModule'),
+    travelModule = require('./modules/travelModule/travelModule'),
+    commonModule = require('./modules/commonModule/commonModule');
+
+angular.module('gtmsApp', [
+
+    // angular deps
     angularRoute,
 
-    testModule
-])
+    // app modules
+    testModule,
+    travelModule,
+    commonModule
 
-.config(['$routeProvider', function($routeProvider) {
-	console.info("NO CZE");
-    $routeProvider
-        .when('/', {
-            controller: 'testView',
-            templateUrl: 'modules/testModule/views/testView/testView.html'
-        })
-        .otherwise('/');
-}]);
+]);
