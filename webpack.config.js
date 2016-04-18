@@ -26,11 +26,8 @@ module.exports = {
         loaders: [
             // required to write "require('./style.css')"
             {
-                test: /\.css$/,
-                loader: extractTextPlugin.extract("style-loader", "css-loader")
-            }, {
                 test: /\.less$/,
-                loader: extractTextPlugin.extract("style-loader", "css-loader!postcss-loader!less-loader")
+                loader: extractTextPlugin.extract('css!postcss!less?{"modifyVars":{"THEME":"\'beetbee\'"}}')
             }, {
                 test: /src[\/\\](modules)[\/\\].+\.html$/,
                 loader: 'ngtemplate?relativeTo=' + (path.resolve(__dirname, './src')) + '/!html'
@@ -42,9 +39,9 @@ module.exports = {
         ]
     },
     resolve: {
-        alias: {
-
-        }
+        root: [
+            path.resolve('./src')
+        ]
     },
     plugins: [
         new extractTextPlugin("[name].css")
