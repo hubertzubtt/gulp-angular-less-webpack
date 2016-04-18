@@ -1,6 +1,7 @@
 var gulp = require("gulp");
 var gulpWatch = require("gulp-watch");
 var gutil = require("gulp-util");
+var clean = require("gulp-clean");
 var webpack = require("webpack");
 var browserSync = require("browser-sync");
 var webpackConfig = require("./webpack.config.js");
@@ -21,6 +22,11 @@ gulp.task("build-dev", ["webpack:build-dev"], function() {
 gulp.task("build", ["webpack:build"]);
 
 gulp.task("webpack:build", function(callback) {
+
+    // clean dir
+    gulp.src('dist/*.*', {read: false})
+        .pipe(clean());
+
     // modify some webpack config options
     var myConfig = Object.create(webpackConfig);
     myConfig.plugins = myConfig.plugins.concat(
