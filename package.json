@@ -9,10 +9,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "angular": "^1.5.3",
-    "angular-route": "^1.5.3",
     "autoprefixer": "^6.3.6",
-    "autoprefixer-loader": "^3.2.0",
     "browser-sync": "^2.12.3",
     "browser-sync-webpack-plugin": "^1.0.1",
     "css-loader": "^0.23.1",
@@ -35,6 +32,7 @@
     "webpack-dev-server": "^1.14.1"
   },
   "dependencies": {
-    "angular": "^1.5.3"
+    "angular": "^1.5.3",
+    "angular-route": "^1.5.3"
   }
 }
