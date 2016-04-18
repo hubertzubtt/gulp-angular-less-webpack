@@ -35,6 +35,10 @@ module.exports = {
             }, {
                 test: /src[\/\\](modules)[\/\\].+\.html$/,
                 loader: 'ngtemplate?relativeTo=' + (path.resolve(__dirname, './src')) + '/!html'
+            }, {
+                test: /\.js$/, // include .js files
+                exclude: /node_modules/, // exclude any and all files in the node_modules folder
+                loader: "jshint-loader"
             }
         ]
     },

@@ -94,7 +94,6 @@ gulp.task("watch", function(callback) {
         console.log("HA", cos);
     });*/
     gulp.start('browser-sync');
-    gulp.watch(['src/**/*.js', 'src/**/*.html', 'src/**/*.less'], function() {
-    	runSequence('webpack:build-dev', 'browser-sync-refresh');
-    });
+    gulp.watch(['src/**/*.js', 'src/**/*.html', 'src/**/*.less'], ['webpack:build-dev']);
+    gulp.watch(['dist/**/*.js', 'dist/**/*.html', 'dist/**/*.css'], ['browser-sync-refresh']);
 });

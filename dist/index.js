@@ -50,7 +50,7 @@
 	
 	var testModule = __webpack_require__(6);
 	
-	angular.module('zapp', [
+	angular.module('app', [
 	    angularRoute,
 	
 	    testModule
@@ -31878,7 +31878,7 @@
 /***/ function(module, exports) {
 
 	var path = 'modules/testModule/views/testView/testView.html';
-	var html = "halo! \r\n{{test}}";
+	var html = "<h1>Test app hello</h1>\r\n{{test}}\r\n<test-directive></test-directive>\r\n";
 	window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, html) }]);
 	module.exports = path;
 
@@ -31890,8 +31890,11 @@
 	
 	function DirectiveFn() {
 		return {
-			templateUrl: template
-		}
+			templateUrl: template,
+			link: function($scope) {
+				$scope.tests = "Zmienna dyrektywy";
+			} 
+		};
 	}
 	
 	module.exports = DirectiveFn;
@@ -31902,7 +31905,7 @@
 /***/ function(module, exports) {
 
 	var path = 'modules/testModule/directives/testDirective/testDirective.html';
-	var html = "tyyyyS";
+	var html = "To jest test dyrektywy {{tests}}";
 	window.angular.module('ng').run(['$templateCache', function(c) { c.put(path, html) }]);
 	module.exports = path;
 

@@ -4,7 +4,7 @@ var angularRoute = require('angular-route');
 
 var testModule = require('./modules/testModule/testModule');
 
-angular.module('zapp', [
+angular.module('app', [
     angularRoute,
 
     testModule
