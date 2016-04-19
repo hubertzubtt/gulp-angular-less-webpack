@@ -4,11 +4,12 @@ var extractTextPlugin = require("extract-text-webpack-plugin");
 var precss = require('precss');
 var autoprefixer = require('autoprefixer');
 
-
 module.exports = {
     cache: true,
     entry: {
-        index: './src/index'
+        index: [
+            './src/index'
+        ]
     },
     output: {
         path: path.join(__dirname, "dist"),
@@ -44,6 +45,7 @@ module.exports = {
         ]
     },
     plugins: [
-        new extractTextPlugin("[name].css")
+        new extractTextPlugin("[name].css"),
+        new webpack.HotModuleReplacementPlugin()
     ]
 };

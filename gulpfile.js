@@ -6,6 +6,7 @@ var webpack = require("webpack");
 var browserSync = require("browser-sync");
 var webpackConfig = require("./webpack.config.js");
 var runSequence = require('run-sequence');
+var webpackDevServer = require('webpack-dev-server');
 
 // The development server (the recommended option for development)
 gulp.task("default", ["watch"]);
@@ -24,7 +25,7 @@ gulp.task("build", ["webpack:build"]);
 gulp.task("webpack:build", function(callback) {
 
     // clean dir
-    gulp.src('dist/*.*', {read: false})
+    gulp.src('dist/*.*', { read: false })
         .pipe(clean());
 
     // modify some webpack config options
@@ -54,10 +55,9 @@ gulp.task("webpack:build", function(callback) {
 var myDevConfig = Object.create(webpackConfig);
 myDevConfig.devtool = "sourcemap";
 myDevConfig.debug = true;
-
 // create a single instance of the compiler to allow caching
 var devCompiler = webpack(myDevConfig);
-    
+
 gulp.task("webpack:build-dev", function(callback) {
     // run webpack
     devCompiler.run(function(err, stats) {
@@ -93,13 +93,22 @@ gulp.task('browser-sync-refresh', function() {
 });
 
 gulp.task("watch", function(callback) {
-    /*
-    var watchConfig = Object.create(webpackConfig);
-    watchConfig.watch = true;
-    webpack(watchConfig, function(cos) {
-        console.log("HA", cos);
-    });*/
-    gulp.start('browser-sync');
-    gulp.watch(['src/**/*.js', 'src/**/*.html', 'src/**/*.less'], ['webpack:build-dev']);
-    gulp.watch(['dist/**/*.js', 'dist/**/*.html', 'dist/**/*.css'], ['browser-sync-refresh']);
+
+    var watchConfig = require("./webpack.config.js");
+    watchConfig.devtool = "sourcemap";
+    watchConfig.debug = true;
+    watchConfig.entry.index.unshift("webpack-dev-server/client?http://localhost:9000/", "webpack/hot/dev-server");
+
+    var server = new webpackDevServer(webpack(watchConfig), {
+        hot: false,
+        colors: true,
+        noInfo: true
+    });
+
+
+    server.listen(9000, "localhost", function(err) {
+        if (err) throw new gutil.PluginError("webpack-dev-server", err);
+        gutil.log("[GTMS]", "Listening on http://localhost:9000/");
+    });
+
 });

@@ -5,11 +5,11 @@
 </head>
 
 <body ng-app="gtmsApp">
-	<a href="/#/">Home</a> |
-	<a href="/#/travel">Travel</a>
-	<hr/>
+	<a ui-sref="home">Home</a> | 
+	<a ui-sref="travel">Travel</a>
+	<hr/> 
 	
-    <div ng-view>
+    <div ui-view>
 
     </div>
     <script src="index.js"></script>
