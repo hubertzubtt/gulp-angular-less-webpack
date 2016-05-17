@@ -6,13 +6,14 @@ var autoprefixer = require('autoprefixer');
 
 
 module.exports = {
+    context: __dirname + "/src",
     cache: true,
     entry: {
-        index: './src/index'
+        index: './index'
     },
     output: {
         path: path.join(__dirname, "dist"),
-        publicPath: "dist/",
+        publicPath: "/",
         filename: "[name].js",
         chunkFilename: "[chunkhash].js"
     },
@@ -47,6 +48,7 @@ module.exports = {
         }
     },
     plugins: [
-        new extractTextPlugin("[name].css")
+        new extractTextPlugin("[name].css"),
+        new webpack.optimize.UglifyJsPlugin()
     ]
 };

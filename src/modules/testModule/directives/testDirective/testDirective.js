@@ -4,8 +4,8 @@ function DirectiveFn() {
 	return {
 		templateUrl: template,
 		link: function($scope) {
-			$scope.tests = "Zmienna dyrektywy";
-		} 
+			$scope.tests = "(tu jest zmienna dyrektywy)";
+		}
 	};
 }
 

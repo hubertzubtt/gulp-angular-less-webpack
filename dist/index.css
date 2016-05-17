@@ -1,10 +1,1 @@
-.test-module {
-  color: red;
-  -webkit-transform: translate(22px, 0);
-          transform: translate(22px, 0);
-  display: -webkit-box;
-  display: flex;
-  border-radius: 3px;
-}
-
-/*# sourceMappingURL=index.css.map*/
+.test-module{color:red;-webkit-transform:translate(22px);transform:translate(22px);display:-webkit-box;display:flex;border-radius:3px}
