@@ -6,9 +6,10 @@ var MODULE_NAME = 'gtmsApp.travelModule';
 
 angular.module(MODULE_NAME, [])
     .controller('travelView', travelView)
-    .config(['$routeProvider', function($routeProvider) {
-        $routeProvider
-            .when('/travel', {
+    .config(['$stateProvider', function($stateProvider) {
+        $stateProvider
+            .state('travel', {
+                url: '^/travel',
                 controller: 'travelView',
                 templateUrl: 'modules/travelModule/views/travelView/travelView.html'
             });
