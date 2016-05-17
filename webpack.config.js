@@ -10,6 +10,7 @@ module.exports = {
     entry: {
         index: './index'
     },
+    devtool: "source-map",
     output: {
         path: path.join(__dirname, "dist"),
         publicPath: "/",
@@ -19,7 +20,9 @@ module.exports = {
     postcss: function() {
         return [
             precss,
-            autoprefixer({ browsers: ['> 1%', 'IE 7'] })
+            autoprefixer({
+                browsers: ['> 1%', 'IE 7']
+            })
         ];
     },
     module: {
@@ -45,6 +48,10 @@ module.exports = {
     },
     plugins: [
         new extractTextPlugin("[name].css"),
-        new webpack.optimize.UglifyJsPlugin()
+        new webpack.optimize.UglifyJsPlugin({
+            exclude: [
+                /node_modules\//
+            ]
+        })
     ]
 };
