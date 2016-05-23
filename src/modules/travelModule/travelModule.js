@@ -2,7 +2,7 @@ var angular = require('angular');
 
 var travelView = require('./views/travelView/travelView');
 
-var MODULE_NAME = 'gtmsApp.travelModule';
+var MODULE_NAME = 'testApp.travelModule';
 
 angular.module(MODULE_NAME, [])
     .controller('travelView', travelView)

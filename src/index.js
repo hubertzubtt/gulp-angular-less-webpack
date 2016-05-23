@@ -1,6 +1,6 @@
 var indexFile = require('file?name=[name].[ext]!./index.html');
 
-// angular deps 
+// angular deps
 var angular = require('angular'),
     angularUiRouter = require('angular-ui-router');
 
@@ -12,7 +12,7 @@ var testModule = require('./modules/testModule/testModule'),
 // app layout
 require('./layouts/mainLayout.less');
 
-angular.module('gtmsApp', [
+angular.module('testApp', [
 
     // angular deps
     angularUiRouter,

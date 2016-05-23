@@ -4,7 +4,7 @@ var style = require('./style/testModule.less');
 var testView = require('./views/testView/testView');
 var testDirective = require('./directives/testDirective/testDirective');
 
-var MODULE_NAME = 'gtmsApp.testModule'; 
+var MODULE_NAME = 'testApp.testModule';
 
 angular.module(MODULE_NAME, [])
     .controller('testView', testView)
